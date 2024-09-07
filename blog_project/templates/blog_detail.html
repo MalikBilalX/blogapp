@@ -6,4 +6,6 @@
         <p> {{ blog_detail.body }} </p>
     </div>
 
+    <a href="{% url 'blog_edit' blog_detail.pk %}">Update blog</a>
+
 {% endblock content %}
