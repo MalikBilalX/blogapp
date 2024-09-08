@@ -46,30 +46,30 @@ class BlogTests(TestCase):
 
     def test_post_createview(self):
         response = self.client.post(
-        reverse("blog_new"),
+        reverse('blog_new'),
         {
-        "title": "New title",
-        "body": "New text",
-        "author": self.user.id,
+        'title': 'New title',
+        'body': 'New text',
+        'author': self.user.id,
         },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Post.objects.last().title, "New title")
-        self.assertEqual(Post.objects.last().body, "New text")
+        self.assertEqual(Post.objects.last().title, 'New title')
+        self.assertEqual(Post.objects.last().body, 'New text')
 
     def test_post_updateview(self):
         response = self.client.post(
-        reverse("blog_edit", args="1"),
+        reverse('blog_edit', args='1'),
         {
-        "title": "Updated title",
-        "body": "Updated text",
+        'title': 'Updated title',
+        'body': 'Updated text',
         },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Post.objects.last().title, "Updated title")
-        self.assertEqual(Post.objects.last().body, "Updated text")
+        self.assertEqual(Post.objects.last().title, 'Updated title')
+        self.assertEqual(Post.objects.last().body, 'Updated text')
 
     def test_post_deleteview(self):
-        response = self.client.post(reverse("blog_delete",
-        args="1"))
+        response = self.client.post(reverse('blog_delete',
+        args='1'))
         self.assertEqual(response.status_code, 302)
